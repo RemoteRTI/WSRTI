@@ -6,10 +6,10 @@
 	url =  https://github.com/ugovaretto/serializer.git
 [submodule "syncqueue"]
 	path = syncqueue
-	url = https://github.com:ugovaretto/syncqueue.git
+	url = https://github.com/ugovaretto/syncqueue.git
 [submodule "tjpp"]
 	path = tjpp
-	url = https://github.com:ugovaretto/tjpp.git
+	url = https://github.com/ugovaretto/tjpp.git
 [submodule "webappclient"]
 	path = webappclient
 	url = git@gitlab.com:ugovaretto/webappclient.git
