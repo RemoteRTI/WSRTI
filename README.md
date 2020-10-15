@@ -9,7 +9,7 @@ Each of the sub-components have their own readme documenting individual usage. A
 
 ### Motivation
 
-Interactive HPC applications typically follow the client-server application model, where a 'server' runs on one or more compute nodes of a high performance computing system, and a 'client' runs elsewhere, for example locally on a user machine, on the login node of the HPC system, or even on a separate web-server. Most existing HPC applications that follow this model, such as high performance visualisation software (e.g. ParaView or VisIT) or debugging software (Intel VTune, Cray Apprentice2, or NVIDIA NSight), have bespoke client-server implementations. We developed this library with the aim of having a re-useable framework that could be used to add interactive capabilities to a variety of HPC applications.
+Interactive HPC applications typically follow the client-server application model, where a 'server' runs on one or more compute nodes of a high performance computing system, and a 'client' runs elsewhere, for example locally on a user machine, on the login node of the HPC system, or even on a separate web-server. Most existing HPC applications that follow this model, such as high performance visualisation software (e.g. ParaView or VisIT) or debugging software (Intel VTune, Cray Apprentice2, or NVIDIA NSight), have bespoke client-server implementations. We developed this library with the aim of having a re-useable framework that could be used to add web-based remote and interactive capabilities to a variety of HPC applications.
 
 ### Client-side 
 
@@ -26,16 +26,19 @@ WSRTI/tjpp
 WSRTI/websocketplus
 ```
 
-### Attributions and other comments
+### Attributions
 
-This library was a collaborative effort, including work by:
+This library is a collaborative effort, with authors including:
 
 Tim Dykes, HPE HPC/AI EMEA Research Lab
+
 Ugo Varetto, Pawsey Supercomputing Center
+
 Claudio Gheller, Institute of Radioastronomy, INAF
+
 Mel Krokos, University of Portsmouth
 
-A research publication documenting the library motivation, design, and use cases is currently under review, a link will be uploaded here when published.
+A research publication documenting the library motivation, design, and use cases is currently under review, a link will be uploaded here when published, please reference this paper and/or the github repository if using the library.
 
 WSRTI was used to enable the interactive version of the Splotch visualisation software (hosted [here](https://wwwmpa.mpa-garching.mpg.de/~kdolag/Splotch/) and [here](https://github.com/splotchviz/splotch)), a demonstrative use case is shown in [1]
 
