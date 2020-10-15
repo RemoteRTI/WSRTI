@@ -1,0 +1,3 @@
+[submodule "dep/syncqueue"]
+	path = dep/syncqueue
+	url = https://github.com/ugovaretto/syncqueue.git
