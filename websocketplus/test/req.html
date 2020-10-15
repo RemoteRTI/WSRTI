@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    </script>
+    <script
+    src = "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+    <script type="text/javascript">
+        function ab2str(buf) {
+            return String.fromCharCode.apply(null, new Uint8Array(buf));
+        }
+
+        var websocket;
+        $(function () {
+            $("#outMsgBinary").val('');
+            $("#inMsgBinary").val('');
+            $("#outMsgBinary")[0].onkeyup = function (evt) {
+                evt = evt || window.event;
+                if(evt.keyCode == 13) sendMessage();
+            }
+            $("#inMsgText").val('');
+            window.WebSocket = window.WebSocket || window.MozWebSocket;
+
+            var proto = location.protocol;
+            var hostname = "localhost";
+            if (proto != "file:") hostname = location.hostname;
+            var WSURL = "ws://" + hostname + ":7681";
+            websocket = new WebSocket(WSURL, 'req-rep');
+            websocket.binaryType = "arraybuffer";
+
+
+            websocket.onopen = function () {
+                $('h2').css('color', 'green');
+            };
+
+            websocket.onerror = function (e) {
+                $('h2').css('color', 'red');
+                console.log(e);
+            };
+
+            websocket.onmessage = function (e) {
+                if(typeof e.data === "string"){
+                    var first = $("#inMsgText").val().length == 0;
+                    if (first) $("#inMsgText").val(e.data);
+                    else $("#inMsgText").val($("#inMsgText").val()
+                            + "\n" + e.data);
+                    var c = $('#inMsgText');
+                    c.animate({scrollTop: c[0].scrollHeight - c.height()}, 1000);
+                } else {
+                    var first = $("#inMsgBinary").val().length == 0;
+                    if (first) $("#inMsgBinary").val(ab2str(e.data));
+                    else $("#inMsgBinary").val($("#inMsgBinary").val()
+                            + "\n" + ab2str(e.data));
+                    var c = $('#inMsgBinary');
+                    c.animate({scrollTop: c[0].scrollHeight - c.height()}, 1000);
+                }
+            }
+        });
+        function sendMessage() {
+                var buf = $("#outMsgBinary").val();
+                if(buf[buf.length - 1] == '\n') buf = buf.substr(0, buf.length - 1);
+                websocket.send(buf);
+                $("#outMsgBinary").val('');
+        }
+
+    </script>
+    <style>
+    </style>
+</head>
+<body>
+<h2 style="text-align: center; font-family: Garamond">Request-Reply</h2>
+<div style="text-align: center; background-color: lightgoldenrodyellow">
+    <div style="float: left;">
+        <h3 style="font-family: Calibri">Reply (Binary Transport)</h3>
+        <textarea id="inMsgBinary" style="background-color: lightcyan;
+                            font-family: 'Lucida Sans Typewriter';
+                            border: none;
+                            width: 300px"
+                  readonly></textarea>
+    </div>
+    <div style="text-align: right">
+        <h3 style="font-family: Calibri">Reply (Text Transport)</h3>
+        <textarea id="inMsgText" style="background-color: lightcyan;
+                            font-family: 'Lucida Sans Typewriter';
+                            border: none;
+                            width: 300px"
+                  readonly></textarea>
+    </div>
+    <div style="background-color: lightyellow; height: 10px; margin-top: 15px;">
+    </div>
+    <div>
+        <p >
+            <h3 style="font-family: Calibri">Request</h3>
+            <span style="font-family: Calibri">(press 'Enter' to send)</span>
+        </p>
+        <textarea id="outMsgBinary" style="background-color: azure;
+                            font-family: 'Lucida Sans Typewriter';
+                            width: 300px"></textarea>
+        <!--<button onclick="sendMessage()" style="position: fixed">Send</button>-->
+    </div>
+</div>
+</body>
+</html>
+
