@@ -1,0 +1,6 @@
+[submodule "test/dep/websocketplus"]
+	path = test/dep/websocketplus
+	url = https://ugovaretto@gitlab.com/ugovaretto/websocketplus.git
+[submodule "test/dep/serializer"]
+	path = test/dep/serializer
+	url = https://github.com/ugovaretto/serializer.git

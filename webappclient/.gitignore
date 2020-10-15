@@ -1,0 +1,7 @@
+.DS_Store
+*#
+*~
+tmp*
+jsdoc*
+.idea
+cmake-build*

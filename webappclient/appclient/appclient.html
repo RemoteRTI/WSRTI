@@ -1,0 +1,53 @@
+<!--
+Remote viewer application
+Authors: Ugo Varetto & Tim Dykes
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- INCLUDE -->
+  <link rel="stylesheet" type="text/css" href="appclient.css">
+  <link rel="stylesheet" type="text/css" href="dep/terminal_embedded.css">
+  <link rel="stylesheet" type="text/css" href="dep/jquery-ui-1.12.1.css">
+  <script type="text/javascript" src="dep/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="dep/jquery-ui-1.12.1.min.js"></script>
+  <script type="text/javascript" src="dep/history.js"></script>
+  <script type="text/javascript" src="dep/terminal.js"></script>
+  <script type="text/javascript" src="dep/download.js"></script>
+  <script type="text/javascript" src="dep/FileSaver.js"></script>
+  <script type="text/javascript" src="config.js"></script>
+  <script type="text/javascript" src="events.js"></script>
+  <script type="text/javascript" src="serializers.js"></script>
+  <script type="text/javascript" src="ws-event-handler.js"></script>
+  <script type="text/javascript" src="ws-server-event-handler.js"></script>
+  <script type="text/javascript" src="ws-command-handler.js"></script>
+  <script type="text/javascript" src="ws-imagestream-handler.js"></script>
+  <script type="text/javascript" src="client-ui.js"></script>
+  <!-- MAIN -->
+  <script type="text/javascript" src="main.js"></script>
+  <!-- GUI -->
+</head>
+<body>
+<div id="gui">
+  <!-- DO USE tabindex TO ENABLE CAPTURE OF KEY EVENTS ON ANY ELEMENT -->
+  <!-- tabindex = -1 allows focus only through explicit .focus() method
+       invocation -->
+  <div id="image_container">
+    <img id="image" tabindex='-1' width='800' height='600'>
+  </div>
+  <div id="console_container">
+    <!--  DO CLOSE THE TAG IMMEDIATELY: IF AN EOL IS PRESENT IT WILL BE
+          ADDED TO THE TEXTAREA-->
+    <div id="console">
+      <textarea id="term" class="terminal"></textarea>
+    </div>
+    <div id="output" tabindex='0'>
+      <!-- DO CLOSE THE TAG IMMEDIATELY: IF AN EOL IS PRESENT IT WILL BE
+           ADDED TO THE TEXTAREA -->
+      <textarea id="log" readonly></textarea>
+    </div>
+  </div>
+</div>
+</body
+</html>
